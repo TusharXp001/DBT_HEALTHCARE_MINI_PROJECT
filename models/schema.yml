@@ -6,8 +6,10 @@ sources:
     schema: STAGING
     tables:
       - name: STG_PATIENT
+        description: "This table contains Patient data from the HealthCare system."
         columns:
           - name: PATIENT_ID
+            description: "This is the Unique Patient Id."
             tests:
               - not_null
               - unique
@@ -16,8 +18,10 @@ sources:
               - not_null
 
       - name: STG_INSURANCE
+        description: "This table contains Insurance data from the HealthCare system."
         columns:
           - name: INSURANCE_ID
+            description: "This is the Unique Insurance Id."
             tests:
               - not_null
               - unique
@@ -28,8 +32,10 @@ sources:
                   field: PATIENT_ID
 
       - name: STG_HEALTH_CONDITION
+        description: "This table contains HealthCondition data from the HealthCare system."
         columns:
           - name: CONDITION_ID
+            description: "This is the HealthCondition Id."
             tests:
               - not_null
               - unique
@@ -40,8 +46,10 @@ sources:
                   field: PATIENT_ID
 
       - name: STG_HCP
+        description: "This table contains HealthCarePractitioner data from the HealthCare system."
         columns:
           - name: HCP_ID
+            description: "This is the Unique HCP Id."
             tests:
               - not_null
               - unique
@@ -52,8 +60,10 @@ sources:
                   field: PATIENT_ID
 
       - name: STG_HCO
+        description: "This table contains HealthCareOrganization data from the HealthCare system."
         columns:
           - name: HCO_ID
+            description: "This is the Unique HCO Id."
             tests:
               - not_null
               - unique
