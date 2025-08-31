@@ -1,0 +1,64 @@
+version: 2
+
+sources:
+  - name: STAGING
+    database: DBT_DEMO
+    schema: STAGING
+    tables:
+      - name: STG_PATIENT
+        columns:
+          - name: PATIENT_ID
+            tests:
+              - not_null
+              - unique
+          - name: UPDATED_AT
+            tests:
+              - not_null
+
+      - name: STG_INSURANCE
+        columns:
+          - name: INSURANCE_ID
+            tests:
+              - not_null
+              - unique
+          - name: PATIENT_ID
+            tests:
+              - relationships:
+                  to: source('STAGING', 'STG_PATIENT')
+                  field: PATIENT_ID
+
+      - name: STG_HEALTH_CONDITION
+        columns:
+          - name: CONDITION_ID
+            tests:
+              - not_null
+              - unique
+          - name: PATIENT_ID
+            tests:
+              - relationships:
+                  to: source('STAGING', 'STG_PATIENT')
+                  field: PATIENT_ID
+
+      - name: STG_HCP
+        columns:
+          - name: HCP_ID
+            tests:
+              - not_null
+              - unique
+          - name: PATIENT_ID
+            tests:
+              - relationships:
+                  to: source('STAGING', 'STG_PATIENT')
+                  field: PATIENT_ID
+
+      - name: STG_HCO
+        columns:
+          - name: HCO_ID
+            tests:
+              - not_null
+              - unique
+          - name: PATIENT_ID
+            tests:
+              - relationships:
+                  to: source('STAGING', 'STG_PATIENT')
+                  field: PATIENT_ID
